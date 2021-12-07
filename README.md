@@ -115,8 +115,10 @@ We pretrain SwAV models using the [official implementation](https://github.com/f
 
 **Training setup**: 
 
-*LSUN:* epochs: 200, nmb_prototypes: 1000, size_crops: [256, 108], batch size: 1792.\
-*FFHQ-256:* epochs: 400, nmb_prototypes: 200, size_crops: [224, 96], batch size: 2048.
+| Dataset | epochs | batch-size | multi-crop | num-prototypes |
+|-------------------|-------------------|---------------------|--------------------|--------------------|
+| LSUN | 200 | 1792 | 2x256 + 6x108 | 1000 |
+| FFHQ-256 | 400 | 2048 | 2x224 + 6x96 | 200 | 
 
 ### Run 
 
