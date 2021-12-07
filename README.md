@@ -1,7 +1,6 @@
 # Label-Efficient Semantic Segmentation with Diffusion Models
 
-Official implementation of the paper [Label-Efficient Semantic Segmentation with Diffusion Models]()\
-by Dmitry Baranchuk, Ivan Rubachev, Andrey Voynov, Valentin Khrulkov, and Artem Babenko.
+Official implementation of the paper [Label-Efficient Semantic Segmentation with Diffusion Models](https://arxiv.org/pdf/2112.03126.pdf)
 
 This code is based on [datasetGAN](https://github.com/nv-tlabs/datasetGAN_release) and [guided-diffusion](https://github.com/openai/guided-diffusion). 
 
@@ -184,10 +183,12 @@ However, one can still reproduce our results:
 ## Cite
 
 ```
-@inproceedings{baranchuk2021label,
-    title={Label-Efficient Semantic Segmentation with Diffusion Models},
-    author={Dmitry Baranchuk, Ivan Rubachev, Andrey Voynov, Valentin Khrulkov, Artem Babenko},
-    booktitle={arXiv},
-    year={2021}
+@misc{baranchuk2021labelefficient,
+      title={Label-Efficient Semantic Segmentation with Diffusion Models}, 
+      author={Dmitry Baranchuk and Ivan Rubachev and Andrey Voynov and Valentin Khrulkov and Artem Babenko},
+      year={2021},
+      eprint={2112.03126},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
 ```
