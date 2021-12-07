@@ -9,7 +9,7 @@
   "training_path": "datasets/ade_bedroom_30/real/train",
   "validation_path": "datasets/ade_bedroom_30/real/train",
   "testing_path": "datasets/ade_bedroom_30/real/test",
-  "model_path": "models/ddpm_checkpoints/lsun_bedroom.pt",
+  "model_path": "checkpoints/ddpm/lsun_bedroom.pt",
 
   "dim": [256, 256, 8192],
   "steps": [50, 150, 250, 350],

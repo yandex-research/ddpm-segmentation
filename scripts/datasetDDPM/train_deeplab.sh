@@ -4,7 +4,7 @@
 # Our released dataset: synthetic_datasets/bedroom_28/ddpm/samples_256x256x3.npz
 # Produced by generate_dataset.sh: set nothing or "". By default, it uses the synthetic dataset from the experiment directory. 
 
-# --max_data: number of synthetic images to use for training (default: 10000).
+# --max_data: number of synthetic images to use for training (default: 50000).
 # One can consider increasing it upto 50000 to get extra 2-4% of mIoU.
 
 # --uncertainty_portion: a portion of samples with most uncertain predictions to remove (default: 0.1)

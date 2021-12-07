@@ -28,7 +28,7 @@ def prepare_data(args):
             args['image_size']
         )
     )
-
+    print(f"Preparing the train set for {args['category']}...")
     X = torch.zeros((len(dataset), *args['dim'][::-1]), dtype=torch.float)
     y = torch.zeros((len(dataset), *args['dim'][:-1]), dtype=torch.uint8)
 
@@ -99,7 +99,6 @@ def evaluation(args, models):
 
 # Adopted from https://github.com/nv-tlabs/datasetGAN_release/blob/d9564d4d2f338eaad78132192b865b6cc1e26cac/datasetGAN/train_interpreter.py#L434
 def train(args):
-    print(f"Preparing the train set for {args['category']}...")
     features, labels = prepare_data(args)
     train_data = FeatureDataset(features, labels)
 

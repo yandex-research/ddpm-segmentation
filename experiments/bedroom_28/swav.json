@@ -9,7 +9,7 @@
   "training_path": "datasets/bedroom_28/real/train",
   "validation_path": "datasets/bedroom_28/ddpm",
   "testing_path": "datasets/bedroom_28/real/test",
-  "model_path": "models/swav_checkpoints/lsun_bedroom.pth",
+  "model_path": "checkpoints/swav/lsun_bedroom.pth",
 
   "dim": [256, 256, 6720],
   "steps": [],

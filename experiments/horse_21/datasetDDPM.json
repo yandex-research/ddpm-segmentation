@@ -9,7 +9,7 @@
   "training_path": "datasets/horse_21/ddpm",
   "validation_path": "datasets/horse_21/real/train",
   "testing_path": "datasets/horse_21/real/test",
-  "model_path": "models/ddpm_checkpoints/lsun_horse.pt",
+  "model_path": "checkpoints/ddpm/lsun_horse.pt",
 
   "dim": [256, 256, 8192],
   "steps": [50, 150, 250, 350],

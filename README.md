@@ -13,8 +13,8 @@ This code is based on [datasetGAN](https://github.com/nv-tlabs/datasetGAN_releas
 The paper investigates the representations learned by the state-of-the-art DDPMs and shows that they capture high-level semantic information valuable for downstream vision tasks.
 We design a simple segmentation approach that exploits these representations and outperforms the alternatives in the few-shot operating point in the context of semantic segmentation. 
 
-<div>
-  <img width="100%" alt="DDPM-based Segmentation" src="https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/figs/ddpm_seg_scheme.png">
+<div align="center">
+  <img width="90%" alt="DDPM-based Segmentation" src="https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/figs/ddpm_seg_scheme.png">
 </div>
 
 &nbsp;
@@ -51,7 +51,7 @@ FFHQ-256 is trained by ourselves using the same model parameters as for the LSUN
 1. Download the datasets:\
  &nbsp;&nbsp;```bash datasets/download_datasets.sh```
 2. Download the DDPM checkpoint:\
- &nbsp;&nbsp; ```bash models/ddpm_checkpoints/download_checkpoint.sh <checkpoint_name>```
+ &nbsp;&nbsp; ```bash checkpoints/ddpm/download_checkpoint.sh <checkpoint_name>```
 3. Check the paths in ```experiments/<dataset_name>/ddpm.json``` 
 4. Run: ```bash scripts/ddpm/train_interpreter.sh <dataset_name>``` 
 
@@ -87,7 +87,7 @@ To download DDPM-produced synthetic datasets (50000 samples, ~7Gb):\
 1. Download the datasets:\
  &nbsp;&nbsp; ```bash datasets/download_datasets.sh```
 2. Download the DDPM checkpoint:\
- &nbsp;&nbsp; ```bash models/ddpm_checkpoints/download_checkpoint.sh <checkpoint_name>```
+ &nbsp;&nbsp; ```bash checkpoints/ddpm/download_checkpoint.sh <checkpoint_name>```
 3. Check the paths in ```experiments/<dataset_name>/datasetDDPM.json```
 4. Train an interpreter on a few DDPM-produced annotated samples: 
    ```bash scripts/datasetDDPM/train_interpreter.sh <dataset_name>```
@@ -123,7 +123,7 @@ We pretrain SwAV models using the [official implementation](https://github.com/f
 1. Download the datasets:\
  &nbsp;&nbsp; ```bash datasets/download_datasets.sh```
 2. Download the SwAV checkpoint:\
- &nbsp;&nbsp; ```bash models/swav_checkpoints/download_checkpoint.sh <checkpoint_name>```
+ &nbsp;&nbsp; ```bash checkpoints/swav/download_checkpoint.sh <checkpoint_name>```
 3. Check the paths in ```experiments/<dataset_name>/swav.json``` 
 4. Run: ```bash scripts/swav/train_interpreter.sh <dataset_name>``` 
    

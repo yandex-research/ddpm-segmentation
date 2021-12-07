@@ -9,7 +9,7 @@
     "training_path": "datasets/ffhq_34/ddpm",
     "validation_path": "datasets/ffhq_34/real/train",
     "testing_path": "datasets/ffhq_34/real/test",
-    "model_path": "models/ddpm_checkpoints/ffhq.pt",
+    "model_path": "checkpoints/ddpm/ffhq.pt",
   
     "dim": [256, 256, 8192],
     "steps": [50, 150, 250, 350],

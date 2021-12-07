@@ -9,7 +9,7 @@
   "training_path": "datasets/cat_15/real/train",
   "validation_path": "datasets/cat_15/ddpm",
   "testing_path": "datasets/cat_15/real/test",
-  "model_path": "models/ddpm_checkpoints/lsun_cat.pt",
+  "model_path": "checkpoints/ddpm/lsun_cat.pt",
 
   "dim": [256, 256, 8192],
   "steps": [50, 150, 250, 350],

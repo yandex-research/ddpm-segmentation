@@ -9,7 +9,7 @@
   "training_path": "datasets/celeba_19/real/train",
   "validation_path": "datasets/celeba_19/real/train",
   "testing_path": "datasets/celeba_19/real/test",
-  "model_path": "models/swav_checkpoints/ffhq-256.pth",
+  "model_path": "checkpoints/swav/ffhq.pth",
 
   "dim": [256, 256, 6720],
   "steps": [],
