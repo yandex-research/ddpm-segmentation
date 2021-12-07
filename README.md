@@ -62,7 +62,7 @@ FFHQ-256 is trained by ourselves using the same model parameters as for the LSUN
 
 1. Set input_activations=true in ```experiments/<dataset_name>/ddpm.json```.\
    &nbsp;&nbsp; In this case, the feature dimension is 18432.
-2. Tune diffusion steps and blocks for a particular task.
+2. Tune for a particular task what diffusion steps and UNet blocks to use.
 
 
 &nbsp;
