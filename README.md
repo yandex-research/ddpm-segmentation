@@ -88,15 +88,15 @@ To download DDPM-produced synthetic datasets (50000 samples, ~7Gb):\
 2. Download the DDPM checkpoint:\
  &nbsp;&nbsp; ```bash checkpoints/ddpm/download_checkpoint.sh <checkpoint_name>```
 3. Check paths in ```experiments/<dataset_name>/datasetDDPM.json```
-4. Train an interpreter on a few DDPM-produced annotated samples: 
-   ```bash scripts/datasetDDPM/train_interpreter.sh <dataset_name>```
-5. Generate a synthetic dataset:\ 
-   ```bash scripts/datasetDDPM/generate_dataset.sh <dataset_name>```\
-   &nbsp;&nbsp; Please specify the hyperparameters in this script for the available resources.\
-   &nbsp;&nbsp; On 8xA100 80Gb, it takes about 8 hours to generate 10000 samples.   
+4. Train an interpreter on a few DDPM-produced annotated samples:\
+   &nbsp;&nbsp; ```bash scripts/datasetDDPM/train_interpreter.sh <dataset_name>```
+5. Generate a synthetic dataset:\
+   &nbsp;&nbsp; ```bash scripts/datasetDDPM/generate_dataset.sh <dataset_name>```\
+   &nbsp;&nbsp;&nbsp; Please specify the hyperparameters in this script for the available resources.\
+   &nbsp;&nbsp;&nbsp; On 8xA100 80Gb, it takes about 12 hours to generate 10000 samples.   
 
 5. Run: ```bash scripts/datasetDDPM/train_deeplab.sh <dataset_name>```\
-   &nbsp;&nbsp; One needs to specify the path to the generated data. See the comments in the script.
+   &nbsp;&nbsp; One needs to specify the path to the generated data. See comments in the script.
 
 **Available checkpoint names:** lsun_bedroom, ffhq, lsun_cat, lsun_horse\
 **Available dataset names:** bedroom_28, ffhq_34, cat_15, horse_21
