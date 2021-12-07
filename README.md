@@ -51,7 +51,7 @@ FFHQ-256 is trained by ourselves using the same model parameters as for the LSUN
  &nbsp;&nbsp;```bash datasets/download_datasets.sh```
 2. Download the DDPM checkpoint:\
  &nbsp;&nbsp; ```bash checkpoints/ddpm/download_checkpoint.sh <checkpoint_name>```
-3. Check the paths in ```experiments/<dataset_name>/ddpm.json``` 
+3. Check paths in ```experiments/<dataset_name>/ddpm.json``` 
 4. Run: ```bash scripts/ddpm/train_interpreter.sh <dataset_name>``` 
 
 **Available checkpoint names:** lsun_bedroom, ffhq, lsun_cat, lsun_horse\
@@ -78,7 +78,7 @@ To download DDPM-produced synthetic datasets (50000 samples, ~7Gb):\
 
 1. Download the synthetic dataset:\
 &nbsp;&nbsp; ```bash synthetic-datasets/ddpm/download_synthetic_dataset.sh <dataset_name>```
-2. Check the paths in ```experiments/<dataset_name>/datasetDDPM.json``` 
+2. Check paths in ```experiments/<dataset_name>/datasetDDPM.json``` 
 3. Run: ```bash scripts/datasetDDPM/train_deeplab.sh <dataset_name>``` 
 
 ### Run | Option #2
@@ -87,10 +87,11 @@ To download DDPM-produced synthetic datasets (50000 samples, ~7Gb):\
  &nbsp;&nbsp; ```bash datasets/download_datasets.sh```
 2. Download the DDPM checkpoint:\
  &nbsp;&nbsp; ```bash checkpoints/ddpm/download_checkpoint.sh <checkpoint_name>```
-3. Check the paths in ```experiments/<dataset_name>/datasetDDPM.json```
+3. Check paths in ```experiments/<dataset_name>/datasetDDPM.json```
 4. Train an interpreter on a few DDPM-produced annotated samples: 
    ```bash scripts/datasetDDPM/train_interpreter.sh <dataset_name>```
-5. Generate a synthetic dataset: ```bash scripts/datasetDDPM/generate_dataset.sh <dataset_name>```\
+5. Generate a synthetic dataset:\ 
+   ```bash scripts/datasetDDPM/generate_dataset.sh <dataset_name>```\
    &nbsp;&nbsp; Please specify the hyperparameters in this script for the available resources.\
    &nbsp;&nbsp; On 8xA100 80Gb, it takes about 8 hours to generate 10000 samples.   
 
@@ -114,8 +115,8 @@ We pretrain SwAV models using the [official implementation](https://github.com/f
 
 **Training setup**: 
 
-*LSUN:* 200 epochs, 1000 prototypes, crop_sizes: [256, 256, 108, 108, 108, 108], batch size 1792.\
-*FFHQ-256:* 400 epochs, 200 prototypes, crop_sizes: [224, 224, 96, 96, 96, 96], batch size 2048.
+*LSUN:* epochs: 200, nmb_prototypes: 1000, size_crops: [256, 108], batch size: 1792.\
+*FFHQ-256:* epochs: 400, nmb_prototypes: 200, size_crops: [224, 96], batch size: 2048.
 
 ### Run 
 
@@ -123,7 +124,7 @@ We pretrain SwAV models using the [official implementation](https://github.com/f
  &nbsp;&nbsp; ```bash datasets/download_datasets.sh```
 2. Download the SwAV checkpoint:\
  &nbsp;&nbsp; ```bash checkpoints/swav/download_checkpoint.sh <checkpoint_name>```
-3. Check the paths in ```experiments/<dataset_name>/swav.json``` 
+3. Check paths in ```experiments/<dataset_name>/swav.json``` 
 4. Run: ```bash scripts/swav/train_interpreter.sh <dataset_name>``` 
    
 **Available checkpoint names:** lsun_bedroom, ffhq, lsun_cat, lsun_horse\
@@ -148,8 +149,8 @@ However, one can still reproduce our results:
 
 1. Download the synthetic dataset:\
  &nbsp;&nbsp;```bash synthetic-datasets/gan/download_synthetic_dataset.sh <dataset_name>```
-2. Change the paths in ```experiments/<dataset_name>/datasetDDPM.json``` 
-3. Change the paths and run: ```bash scripts/datasetDDPM/train_deeplab.sh <dataset_name>```
+2. Change paths in ```experiments/<dataset_name>/datasetDDPM.json``` 
+3. Change paths and run: ```bash scripts/datasetDDPM/train_deeplab.sh <dataset_name>```
 
 **Available dataset names:** bedroom_28, ffhq_34, cat_15, horse_21
 
