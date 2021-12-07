@@ -30,7 +30,7 @@ We design a simple segmentation approach that exploits these representations and
 The evaluation is performed on 6 collected datasets with a few annotated images in the training set:
 Bedroom-18, FFHQ-34, Cat-15, Horse-21, CelebA-19 and ADE-Bedroom-30. The number corresponds to the number of semantic classes.
 
-[datasets.tar.gz](https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/datasets.tar.gz) (~70Mb)
+[datasets.tar.gz](https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/datasets.tar.gz) (~47Mb)
 
 
 &nbsp;

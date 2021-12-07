@@ -19,6 +19,8 @@ from guided_diffusion.guided_diffusion.dist_util import dev
 
 def prepare_data(args):
     feature_extractor = create_feature_extractor(**args)
+    
+    print(f"Preparing the train set for {args['category']}...")
     dataset = ImageLabelDataset(
         data_dir=args['training_path'],
         resolution=args['image_size'],
@@ -28,7 +30,6 @@ def prepare_data(args):
             args['image_size']
         )
     )
-    print(f"Preparing the train set for {args['category']}...")
     X = torch.zeros((len(dataset), *args['dim'][::-1]), dtype=torch.float)
     y = torch.zeros((len(dataset), *args['dim'][:-1]), dtype=torch.uint8)
 
