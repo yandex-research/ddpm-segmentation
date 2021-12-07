@@ -1,0 +1,10 @@
+.DS_Store
+__pycache__/
+*.pt
+*.pth
+pixel_classifiers
+
+*.npy
+*.jpg
+*.png
+*.npz
