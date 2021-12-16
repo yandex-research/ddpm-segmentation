@@ -106,7 +106,7 @@ def train(args):
     print(f" ********* max_label {args['number_class']} *** ignore_label {args['ignore_label']} ***********")
     print(f" *********************** Current number data {len(features)} ***********************")
 
-    train_loader = DataLoader(dataset=train_data, batch_size=args['batch_size'], shuffle=True)
+    train_loader = DataLoader(dataset=train_data, batch_size=args['batch_size'], shuffle=True, drop_last=True)
 
     print(" *********************** Current dataloader length " +  str(len(train_loader)) + " ***********************")
     for MODEL_NUMBER in range(args['start_model_num'], args['model_num'], 1):
