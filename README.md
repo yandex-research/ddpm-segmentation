@@ -1,5 +1,7 @@
 # Label-Efficient Semantic Segmentation with Diffusion Models
 
+[[Project page]](https://yandex-research.github.io/ddpm-segmentation/)
+
 Official implementation of the paper [Label-Efficient Semantic Segmentation with Diffusion Models](https://arxiv.org/pdf/2112.03126.pdf)
 
 This code is based on [datasetGAN](https://github.com/nv-tlabs/datasetGAN_release) and [guided-diffusion](https://github.com/openai/guided-diffusion). 
@@ -9,11 +11,10 @@ This code is based on [datasetGAN](https://github.com/nv-tlabs/datasetGAN_releas
 &nbsp;
 ## Overview
 
-The paper investigates the representations learned by the state-of-the-art DDPMs and shows that they capture high-level semantic information valuable for downstream vision tasks.
-We design a simple segmentation approach that exploits these representations and outperforms the alternatives in the few-shot operating point in the context of semantic segmentation. 
+The paper investigates the representations learned by the state-of-the-art DDPMs and shows that they capture high-level semantic information valuable for downstream vision tasks. We design a simple semantic segmentation approach that exploits these representations and outperforms the alternatives in the few-shot operating point.
 
 <div align="center">
-  <img width="90%" alt="DDPM-based Segmentation" src="https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/figs/ddpm_seg_scheme.png">
+  <img width="100%" alt="DDPM-based Segmentation" src="https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/figs/new_ddpm_seg_scheme.png">
 </div>
 
 &nbsp;
