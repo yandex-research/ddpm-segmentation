@@ -1,0 +1,27 @@
+{
+  "exp_dir": "pixel_classifiers/celeba_19/swav_w2",
+  "model_type": "swav_w2",
+  
+  "category": "celeba_19",
+  "number_class": 19,
+  "ignore_label": 255,
+
+  "training_path": "datasets/celeba_19/real/train",
+  "validation_path": "datasets/celeba_19/real/train",
+  "testing_path": "datasets/celeba_19/real/test",
+  "model_path": "checkpoints/swav_w2/ffhq.pth",
+
+  "dim": [256, 256, 13440],
+  "steps": [],
+  "blocks": [],
+
+  "model_num": 10,
+  "batch_size": 64,
+  "max_training": 30,
+  
+  "training_number": 20,
+  "testing_number": 500,
+
+  "upsample_mode":"bilinear",
+  "input_activations": true
+}

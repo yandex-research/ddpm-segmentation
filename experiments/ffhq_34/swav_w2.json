@@ -1,0 +1,27 @@
+{
+  "exp_dir": "pixel_classifiers/ffhq_34/swav_W2",
+  "model_type": "swav_w2",
+  
+  "category": "ffhq_34",
+  "number_class": 34,
+  "ignore_label": 255,
+
+  "training_path": "datasets/ffhq_34/real/train",
+  "validation_path": "datasets/ffhq_34/ddpm",
+  "testing_path": "datasets/ffhq_34/real/test",
+  "model_path": "checkpoints/swav_w2/ffhq.pth",
+
+  "dim": [256, 256, 13440],
+  "steps": [],
+  "blocks": [],
+
+  "model_num": 10,
+  "batch_size": 64,
+  "max_training": 30,
+  
+  "training_number": 20,
+  "testing_number": 20,
+
+  "upsample_mode":"bilinear",
+  "input_activations": true
+}

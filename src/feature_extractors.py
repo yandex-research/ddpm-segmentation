@@ -15,6 +15,9 @@ def create_feature_extractor(model_type, **kwargs):
     elif model_type == 'swav':
         print("Creating SwAV Feature Extractor...")
         feature_extractor = FeatureExtractorSwAV(**kwargs)
+    elif model_type == 'swav_w2':
+        print("Creating SwAVw2 Feature Extractor...")
+        feature_extractor = FeatureExtractorSwAVw2(**kwargs)
     else:
         raise Exception(f"Wrong model type: {model_type}")
     return feature_extractor
@@ -156,7 +159,24 @@ class FeatureExtractorSwAV(FeatureExtractor):
 
         # Per-layer list of activations [N, C, H, W]
         return activations
-        
+    
+
+class FeatureExtractorSwAVw2(FeatureExtractorSwAV):
+    ''' 
+    Wrapper to extract features from twice wider pretrained SwAVs 
+    '''
+    def _load_pretrained_model(self, model_path, **kwargs):
+        import swav
+        sys.path.append(swav.__path__[0])
+        from swav.hubconf import resnet50w2
+
+        model = resnet50w2(pretrained=False).to(device).eval()
+        model.fc = nn.Identity()
+        model = torch.nn.DataParallel(model)
+        state_dict = torch.load(model_path)['state_dict']
+        model.load_state_dict(state_dict, strict=False) 
+        self.model = model.module.eval()
+
 
 def collect_features(args, activations: List[torch.Tensor], sample_idx=0):
     """ Upsample activations and concatenate them to form a feature tensor """
@@ -171,8 +191,3 @@ def collect_features(args, activations: List[torch.Tensor], sample_idx=0):
         resized_activations.append(feats[0])
     
     return torch.cat(resized_activations, dim=0)
-
-
-
-
-

@@ -1,0 +1,28 @@
+{
+    "exp_dir": "pixel_classifiers/horse_21/swav_w2",
+    "model_type": "swav_w2",
+    
+    "category": "horse_21",
+    "number_class": 21,
+    "ignore_label": 255,
+  
+    "training_path": "datasets/horse_21/real/train",
+    "validation_path": "datasets/horse_21/ddpm",
+    "testing_path": "datasets/horse_21/real/test",
+    "model_path": "checkpoints/swav_w2/lsun_horse.pth",
+  
+    "dim": [256, 256, 13440],
+    "steps": [],
+    "blocks": [],
+  
+    "model_num": 10,
+    "batch_size": 64,
+    "max_training": 30,
+    
+    "training_number": 30,
+    "testing_number": 30,
+  
+    "upsample_mode":"bilinear",
+    "input_activations": true
+}
+  

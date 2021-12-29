@@ -15,7 +15,7 @@ def make_transform(model_type: str, resolution: int):
             transforms.ToTensor(),
             lambda x: 2 * x - 1
         ])
-    elif model_type == 'swav':
+    elif model_type in ['swav', 'swav_w2']:
         transform = transforms.Compose([
             transforms.Resize(resolution),
             transforms.ToTensor(),
