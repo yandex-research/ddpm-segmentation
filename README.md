@@ -109,26 +109,28 @@ To download DDPM-produced synthetic datasets (50000 samples, ~7Gb):\
 
 We pretrain SwAV models using the [official implementation](https://github.com/facebookresearch/swav) on the LSUN and FFHQ-256 datasets:
 
-*LSUN-Bedroom:* [lsun_bedroom.pth](https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/models/swav_checkpoints/lsun_bedroom.pth)\
-*FFHQ-256:* [ffhq.pth](https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/models/swav_checkpoints/ffhq.pth)\
-*LSUN-Cat:* [lsun_cat.pth](https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/models/swav_checkpoints/lsun_cat.pth)\
-*LSUN-Horse:* [lsun_horse.pth](https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/models/swav_checkpoints/lsun_horse.pth)
+| LSUN-Bedroom | FFHQ-256 | LSUN-Cat | LSUN-Horse |
+|-------------------|-------------------|---------------------|--------------------|
+| [SwAV](https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/models/swav_checkpoints/lsun_bedroom.pth) | [SwAV](https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/models/swav_checkpoints/ffhq.pth) | [SwAV](https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/models/swav_checkpoints/lsun_cat.pth) | [SwAV](https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/models/swav_checkpoints/lsun_horse.pth) | 
+| [SwAVw2](https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/models/swav_w2_checkpoints/lsun_bedroom.pth) | [SwAVw2](https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/models/swav_w2_checkpoints/ffhq.pth) | [SwAVw2](https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/models/swav_w2_checkpoints/lsun_cat.pth) | [SwAVw2](https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/models/swav_w2_checkpoints/lsun_horse.pth) | 
 
-**Training setup**: 
+**Training setups**: 
 
-| Dataset | epochs | batch-size | multi-crop | num-prototypes |
-|-------------------|-------------------|---------------------|--------------------|--------------------|
-| LSUN | 200 | 1792 | 2x256 + 6x108 | 1000 |
-| FFHQ-256 | 400 | 2048 | 2x224 + 6x96 | 200 | 
+| Dataset | Model | epochs | batch-size | multi-crop | num-prototypes |
+|-------------------|-------------------|---------------------|--------------------|--------------------|--------------------|
+| LSUN | RN50 | 200 | 1792 | 2x256 + 6x108 | 1000 |
+| FFHQ-256 | RN50 | 400 | 2048 | 2x224 + 6x96 | 200 |
+| LSUN | RN50w2 | 200 | 1920 | 2x256 + 4x108 | 1000 |
+| FFHQ-256 | RN50w2 | 400 | 2048 | 2x224 + 4x96 | 200 |
 
 ### Run 
 
 1. Download the datasets:\
  &nbsp;&nbsp; ```bash datasets/download_datasets.sh```
 2. Download the SwAV checkpoint:\
- &nbsp;&nbsp; ```bash checkpoints/swav/download_checkpoint.sh <checkpoint_name>```
-3. Check paths in ```experiments/<dataset_name>/swav.json``` 
-4. Run: ```bash scripts/swav/train_interpreter.sh <dataset_name>``` 
+ &nbsp;&nbsp; ```bash checkpoints/{swav|swav_w2}/download_checkpoint.sh <checkpoint_name>```
+3. Check paths in ```experiments/<dataset_name>/{swav|swav_w2}.json``` 
+4. Run: ```bash scripts/{swav|swav_w2}/train_interpreter.sh <dataset_name>```
    
 **Available checkpoint names:** lsun_bedroom, ffhq, lsun_cat, lsun_horse\
 **Available dataset names:** bedroom_28, ffhq_34, cat_15, horse_21, celeba_19, ade_bedroom_30
@@ -170,6 +172,7 @@ However, one can still reproduce our results:
 | GAN Inversion  | 13.9 ± 0.6 	| 51.7 ± 0.8 	| 21.4 ± 1.7 	| 17.7 ± 0.4 | 51.5 ± 2.3 | 11.1 ± 0.2 |
 | GAN Encoder  | 22.4 ± 1.6 	| 53.9 ± 1.3 	| 32.0 ± 1.8 	| 26.7 ± 0.7 | 53.9 ± 0.8 | 15.7 ± 0.3 |
 | SwAV      	 | 41.0 ± 2.3 	| 54.7 ± 1.4 	| 44.1 ± 2.1 	| 51.7 ± 0.5 | 53.2 ± 1.0 | 30.3 ± 1.5 | 
+| SwAVw2      	 | 42.4 ± 1.7 	| **56.9 ± 1.3** 	| 45.1 ± 2.1 	| 54.0 ± 0.9 | 52.4 ± 1.3 | 30.6 ± 1.0 | 
 | DatasetGAN	 | 31.3 ± 2.7 	| **57.0 ± 1.0** | 36.5 ± 2.3 	| 45.4 ± 1.4 | --	| --  | 
 | DatasetDDPM  | **46.9 ± 2.8** |  56.0 ± 0.9    | 45.4 ± 2.8 	| 60.4 ± 1.2  | --	| --              |
 | **DDPM**      	 | **46.1 ± 1.9** | **57.0 ± 1.4** | **52.3 ± 3.0** | **63.1 ± 0.9** | **57.0 ± 1.0** | **32.3 ± 1.5** |
