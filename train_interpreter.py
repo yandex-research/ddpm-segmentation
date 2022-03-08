@@ -33,7 +33,7 @@ def prepare_data(args):
     X = torch.zeros((len(dataset), *args['dim'][::-1]), dtype=torch.float)
     y = torch.zeros((len(dataset), *args['dim'][:-1]), dtype=torch.uint8)
 
-    if 'share_noise' in args:
+    if 'share_noise' in args and args['share_noise']:
         rnd_gen = torch.Generator(device=dev()).manual_seed(args['seed'])
         noise = torch.randn(1, 3, args['image_size'], args['image_size'], 
                             generator=rnd_gen, device=dev())
@@ -71,7 +71,7 @@ def evaluation(args, models):
         )
     )
 
-    if 'share_noise' in args:
+    if 'share_noise' in args and args['share_noise']:
         rnd_gen = torch.Generator(device=dev()).manual_seed(args['seed'])
         noise = torch.randn(1, 3, args['image_size'], args['image_size'], 
                             generator=rnd_gen, device=dev())
