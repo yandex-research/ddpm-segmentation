@@ -1,6 +1,6 @@
 # Label-Efficient Semantic Segmentation with Diffusion Models
 
-[[Project page]](https://yandex-research.github.io/ddpm-segmentation/)
+**ICLR'2022** [[Project page]](https://yandex-research.github.io/ddpm-segmentation/)
 
 Official implementation of the paper [Label-Efficient Semantic Segmentation with Diffusion Models](https://arxiv.org/pdf/2112.03126.pdf)
 
@@ -18,11 +18,15 @@ The paper investigates the representations learned by the state-of-the-art DDPMs
 </div>
 
 &nbsp;
-## Dependencies
+## Updates
 
-* Python >= 3.7
-* Packages: see `requirements.txt`
+**3/9/2022:** 
 
+1) Improved performance of DDPM-based segmentation by changing:\
+   &nbsp;&nbsp;Diffusion steps: [50,150,250,350] --> [50,150,250];\
+   &nbsp;&nbsp;UNet blocks: [6,7,8,9] --> [5,6,7,8,12];
+3) Trained a bit better DDPM on FFHQ-256;
+4) Added [MAE](https://github.com/facebookresearch/mae) for comparison.
 
 &nbsp;
 ## Datasets
@@ -194,14 +198,6 @@ However, one can still reproduce our results:
 &nbsp;
 ## Results
 
-**Update 3/9/2022:** 
-
-1) Improved performance of DDPM-based segmentation by changing:\
-   &nbsp;&nbsp;Diffusion steps: [50,150,250,350] --> [50,150,250];\
-   &nbsp;&nbsp;UNet blocks: [6,7,8,9] --> [5,6,7,8,12];
-3) Trained a bit better DDPM on FFHQ-256;
-4) Added [MAE](https://github.com/facebookresearch/mae) for comparison.
-
 * Performance in terms of mean IoU:
 
 | Method       | Bedroom-28 | FFHQ-34 	| Cat-15 | Horse-21  | CelebA-19 | ADE-Bedroom-30 |
@@ -218,7 +214,6 @@ However, one can still reproduce our results:
 | **DDPM**      	 | **49.4 ± 1.9** | **59.1 ± 1.4** | **53.7 ± 3.3** | **65.0 ± 0.8** | **59.9 ± 1.0** | **34.6 ± 1.7** |
 
 &nbsp;
-
 * Examples of segmentation masks predicted by the DDPM-based method:
 
 <div>
