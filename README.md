@@ -115,7 +115,7 @@ We pretrain MAE models using the [official implementation](https://github.com/fa
 **Training setups**: 
 
 | Dataset | Backbone | epochs | batch-size | mask-ratio |
-|-------------------|-------------------|---------------------|--------------------|--------------------|--------------------|
+|-------------------|-------------------|---------------------|--------------------|--------------------|
 | LSUN Bedroom | ViT-L-8 | 150 | 1024 | 0.75 |
 | LSUN Cat | ViT-L-8 | 200 | 1024 | 0.75 |
 | LSUN Horse | ViT-L-8 | 200 | 1024 | 0.75 |
@@ -193,6 +193,14 @@ However, one can still reproduce our results:
 
 &nbsp;
 ## Results
+
+**Update 3/9/2022:** 
+
+1) Improved performance of DDPM-based segmentation by changing:\
+   &nbsp;&nbsp;Diffusion steps: [50,150,250,350] --> [50,150,250];\
+   &nbsp;&nbsp;UNet blocks: [6,7,8,9] --> [5,6,7,8,12];
+3) Trained a bit better DDPM on FFHQ-256;
+4) Added [MAE](https://github.com/facebookresearch/mae) for comparison.
 
 * Performance in terms of mean IoU:
 
