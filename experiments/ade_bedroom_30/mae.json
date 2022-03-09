@@ -1,0 +1,27 @@
+{
+  "exp_dir": "pixel_classifiers/ade_bedroom_30/mae",
+  "model_type": "mae",
+  
+  "category": "ade_bedroom_30",
+  "number_class": 30,
+  "ignore_label": 255,
+
+  "training_path": "datasets/ade_bedroom_30/real/train",
+  "validation_path": "datasets/ade_bedroom_30/real/train",
+  "testing_path": "datasets/ade_bedroom_30/real/test",
+  "model_path": "checkpoints/mae/lsun_bedroom.pth",
+
+  "dim": [256, 256, 12288],
+  "steps": [],
+  "blocks": [],
+
+  "model_num": 10,
+  "batch_size": 64,
+  "max_training": 30,
+  
+  "upsample_mode":"bilinear",
+  "training_number": 50,
+  "testing_number": 650,
+
+  "input_activations": false
+}

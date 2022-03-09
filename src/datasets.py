@@ -15,21 +15,12 @@ def make_transform(model_type: str, resolution: int):
             transforms.ToTensor(),
             lambda x: 2 * x - 1
         ])
-    elif model_type in ['swav', 'swav_w2']:
+    elif model_type in ['mae', 'swav', 'swav_w2', 'deeplab']:
         transform = transforms.Compose([
             transforms.Resize(resolution),
             transforms.ToTensor(),
             transforms.Normalize(
                 mean=[0.485, 0.456, 0.406], 
-                std=[0.229, 0.224, 0.225]
-            )
-        ])
-    elif model_type == 'deeplab':
-        transform = transforms.Compose([
-            transforms.Resize(resolution),
-            transforms.ToTensor(),
-            transforms.Normalize(
-                mean=[0.485, 0.456, 0.406],
                 std=[0.229, 0.224, 0.225]
             )
         ])

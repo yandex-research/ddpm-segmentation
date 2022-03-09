@@ -42,7 +42,7 @@ The models trained on LSUN are adopted from [guided-diffusion](https://github.co
 FFHQ-256 is trained by ourselves using the same model parameters as for the LSUN models.
 
 *LSUN-Bedroom:* [lsun_bedroom.pt](https://openaipublic.blob.core.windows.net/diffusion/jul-2021/lsun_bedroom.pt)\
-*FFHQ-256:* [ffhq.pt](https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/models/ddpm_checkpoints/ffhq.pt)\
+*FFHQ-256:* [ffhq.pt](https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/models/ddpm_checkpoints/ffhq.pt) (Updated 3/8/2022)\
 *LSUN-Cat:* [lsun_cat.pt](https://openaipublic.blob.core.windows.net/diffusion/jul-2021/lsun_cat.pt)\
 *LSUN-Horse:* [lsun_horse.pt](https://openaipublic.blob.core.windows.net/diffusion/jul-2021/lsun_horse.pt)
 
@@ -61,9 +61,7 @@ FFHQ-256 is trained by ourselves using the same model parameters as for the LSUN
 
 ### How to improve the performance
 
-1. Set input_activations=true in ```experiments/<dataset_name>/ddpm.json```.\
-   &nbsp;&nbsp; In this case, the feature dimension is 18432.
-2. Tune for a particular task what diffusion steps and UNet blocks to use.
+* Tune for a particular task what diffusion steps and UNet blocks to use.
 
 
 &nbsp;
@@ -72,7 +70,7 @@ FFHQ-256 is trained by ourselves using the same model parameters as for the LSUN
 
 ### Synthetic datasets
 
-To download DDPM-produced synthetic datasets (50000 samples, ~7Gb):\
+To download DDPM-produced synthetic datasets (50000 samples, ~7Gb) (updated 3/8/2022):\
 ```bash synthetic-datasets/gan/download_synthetic_dataset.sh <dataset_name>```
 
 ### Run | Option #1
@@ -103,6 +101,39 @@ To download DDPM-produced synthetic datasets (50000 samples, ~7Gb):\
 **Available dataset names:** bedroom_28, ffhq_34, cat_15, horse_21
 
 &nbsp;
+## MAE
+
+### Pretrained MAEs
+
+We pretrain MAE models using the [official implementation](https://github.com/facebookresearch/mae) on the LSUN and FFHQ-256 datasets:
+
+*LSUN-Bedroom:* [lsun_bedroom.pth](https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/models/mae_checkpoints/lsun_bedroom.pth)\
+*FFHQ-256:* [ffhq.pth](https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/models/mae_checkpoints/ffhq.pth)\
+*LSUN-Cat:* [lsun_cat.pth](https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/models/mae_checkpoints/lsun_cat.pth)\
+*LSUN-Horse:* [lsun_horse.pth](https://storage.yandexcloud.net/yandex-research/ddpm-segmentation/models/mae_checkpoints/lsun_horse.pth)
+
+**Training setups**: 
+
+| Dataset | Backbone | epochs | batch-size | mask-ratio |
+|-------------------|-------------------|---------------------|--------------------|--------------------|--------------------|
+| LSUN Bedroom | ViT-L-8 | 150 | 1024 | 0.75 |
+| LSUN Cat | ViT-L-8 | 200 | 1024 | 0.75 |
+| LSUN Horse | ViT-L-8 | 200 | 1024 | 0.75 |
+| FFHQ-256 | ViT-L-8 | 400 | 1024 | 0.75 |
+
+### Run 
+
+1. Download the datasets:\
+ &nbsp;&nbsp; ```bash datasets/download_datasets.sh```
+2. Download the MAE checkpoint:\
+ &nbsp;&nbsp; ```bash checkpoints/mae/download_checkpoint.sh <checkpoint_name>```
+3. Check paths in ```experiments/<dataset_name>/mae.json``` 
+4. Run: ```bash scripts/mae/train_interpreter.sh <dataset_name>```
+   
+**Available checkpoint names:** lsun_bedroom, ffhq, lsun_cat, lsun_horse\
+**Available dataset names:** bedroom_28, ffhq_34, cat_15, horse_21, celeba_19, ade_bedroom_30
+
+&nbsp;
 ## SwAV
 
 ### Pretrained SwAVs
@@ -116,7 +147,7 @@ We pretrain SwAV models using the [official implementation](https://github.com/f
 
 **Training setups**: 
 
-| Dataset | Model | epochs | batch-size | multi-crop | num-prototypes |
+| Dataset | Backbone | epochs | batch-size | multi-crop | num-prototypes |
 |-------------------|-------------------|---------------------|--------------------|--------------------|--------------------|
 | LSUN | RN50 | 200 | 1792 | 2x256 + 6x108 | 1000 |
 | FFHQ-256 | RN50 | 400 | 2048 | 2x224 + 6x96 | 200 |
@@ -168,14 +199,15 @@ However, one can still reproduce our results:
 | Method       | Bedroom-28 | FFHQ-34 	| Cat-15 | Horse-21  | CelebA-19 | ADE-Bedroom-30 |
 |:------------- |:-------------- |:--------------- |:--------------- |:--------------- |:--------------- |:--------------- |
 | ALAE   	| 20.0 ± 1.0     |  48.1 ± 1.3  	| -- 	| --          	| 49.7 ± 0.7 | 15.0 ± 0.5      |
-| VDVAE  	| --         	| **57.3 ± 1.1**    | -- | --          	| 54.1 ± 1.0 | --          	|
+| VDVAE  	| --         	| 57.3 ± 1.1    | -- | --          	| 54.1 ± 1.0 | --          	|
 | GAN Inversion  | 13.9 ± 0.6 	| 51.7 ± 0.8 	| 21.4 ± 1.7 	| 17.7 ± 0.4 | 51.5 ± 2.3 | 11.1 ± 0.2 |
 | GAN Encoder  | 22.4 ± 1.6 	| 53.9 ± 1.3 	| 32.0 ± 1.8 	| 26.7 ± 0.7 | 53.9 ± 0.8 | 15.7 ± 0.3 |
 | SwAV      	 | 41.0 ± 2.3 	| 54.7 ± 1.4 	| 44.1 ± 2.1 	| 51.7 ± 0.5 | 53.2 ± 1.0 | 30.3 ± 1.5 | 
-| SwAVw2      	 | 42.4 ± 1.7 	| **56.9 ± 1.3** 	| 45.1 ± 2.1 	| 54.0 ± 0.9 | 52.4 ± 1.3 | 30.6 ± 1.0 | 
-| DatasetGAN	 | 31.3 ± 2.7 	| **57.0 ± 1.0** | 36.5 ± 2.3 	| 45.4 ± 1.4 | --	| --  | 
-| DatasetDDPM  | **46.9 ± 2.8** |  56.0 ± 0.9    | 45.4 ± 2.8 	| 60.4 ± 1.2  | --	| --              |
-| **DDPM**      	 | **46.1 ± 1.9** | **57.0 ± 1.4** | **52.3 ± 3.0** | **63.1 ± 0.9** | **57.0 ± 1.0** | **32.3 ± 1.5** |
+| SwAVw2      	 | 42.4 ± 1.7 	| 56.9 ± 1.3 	| 45.1 ± 2.1 	| 54.0 ± 0.9 | 52.4 ± 1.3 | 30.6 ± 1.0 |
+| MAE           | 45.0 ± 2.0  | **58.8 ± 1.1** | **52.4 ± 2.3** | 63.4 ± 1.4 | 57.8 ± 0.4 | 31.7 ± 1.8 |
+| DatasetGAN	 | 31.3 ± 2.7 	| 57.0 ± 1.0 | 36.5 ± 2.3 	| 45.4 ± 1.4 | --	| --  |
+| DatasetDDPM  | 47.9 ± 2.9 |  56.0 ± 0.9    | 47.6 ± 1.5 	| 60.8 ± 1.0  | --	| --              |
+| **DDPM**      	 | **49.4 ± 1.9** | **59.1 ± 1.4** | **53.7 ± 3.3** | **65.0 ± 0.8** | **59.9 ± 1.0** | **34.6 ± 1.7** |
 
 &nbsp;
 

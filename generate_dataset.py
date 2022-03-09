@@ -18,12 +18,10 @@ import torch.distributed as dist
 from guided_diffusion.guided_diffusion import dist_util, logger
 from guided_diffusion.guided_diffusion.script_util import (
     model_and_diffusion_defaults,
-    create_model_and_diffusion,
-    add_dict_to_argparser,
-    args_to_dict,
+    add_dict_to_argparser
 )
 
-from src.pixel_classifier import load_ensemble, compute_iou, predict_labels
+from src.pixel_classifier import load_ensemble, predict_labels
 from src.feature_extractors import create_feature_extractor, collect_features
 
 

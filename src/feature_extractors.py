@@ -12,6 +12,9 @@ def create_feature_extractor(model_type, **kwargs):
     if model_type == 'ddpm':
         print("Creating DDPM Feature Extractor...")
         feature_extractor = FeatureExtractorDDPM(**kwargs)
+    elif model_type == 'mae':
+        print("Creating MAE Feature Extractor...")
+        feature_extractor = FeatureExtractorMAE(**kwargs)
     elif model_type == 'swav':
         print("Creating SwAV Feature Extractor...")
         feature_extractor = FeatureExtractorSwAV(**kwargs)
@@ -116,6 +119,56 @@ class FeatureExtractorDDPM(FeatureExtractor):
                 activations.append(block.activations)
                 block.activations = None
 
+        # Per-layer list of activations [N, C, H, W]
+        return activations
+
+
+class FeatureExtractorMAE(FeatureExtractor):
+    ''' 
+    Wrapper to extract features from pretrained MAE
+    '''
+    def __init__(self, num_blocks=12, **kwargs):
+        super().__init__(**kwargs)
+
+        # Save features from deep encoder blocks 
+        for layer in self.model.blocks[-num_blocks:]:
+            layer.register_forward_hook(self.save_hook)
+            self.feature_blocks.append(layer)
+
+    def _load_pretrained_model(self, model_path, **kwargs):
+        import mae
+        from functools import partial
+        sys.path.append(mae.__path__[0])
+        from mae.models_mae import MaskedAutoencoderViT
+
+        # Create MAE with ViT-L-8 backbone 
+        model = MaskedAutoencoderViT(
+            img_size=256, patch_size=8, embed_dim=1024, depth=24, num_heads=16,
+            decoder_embed_dim=512, decoder_depth=8, decoder_num_heads=16,
+            mlp_ratio=4, norm_layer=partial(nn.LayerNorm, eps=1e-6), norm_pix_loss=True
+        )
+
+        checkpoint = torch.load(model_path, map_location='cpu')
+        model.load_state_dict(checkpoint['model'])
+        self.model = model.eval().to(device)
+
+    @torch.no_grad()
+    def forward(self, x, **kwargs):
+        _, _, ids_restore = self.model.forward_encoder(x, mask_ratio=0)
+        ids_restore = ids_restore.unsqueeze(-1)
+        sqrt_num_patches = int(self.model.patch_embed.num_patches ** 0.5)
+        activations = []
+        for block in self.feature_blocks:
+            # remove cls token 
+            a = block.activations[:, 1:]
+            # unshuffle patches
+            a = torch.gather(a, dim=1, index=ids_restore.repeat(1, 1, a.shape[2])) 
+            # reshape to obtain spatial feature maps
+            a = a.permute(0, 2, 1)
+            a = a.view(*a.shape[:2], sqrt_num_patches, sqrt_num_patches)
+
+            activations.append(a)
+            block.activations = None
         # Per-layer list of activations [N, C, H, W]
         return activations
 

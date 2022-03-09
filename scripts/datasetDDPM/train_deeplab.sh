@@ -17,7 +17,7 @@
 
 DATASET=$1 # Available datasets: bedroom_28, ffhq_34, cat_15, horse_21
 
-python train_deeplab.py \
+CUDA_VISIBLE_DEVICES=7 python train_deeplab.py \
         --data_path synthetic_datasets/ddpm/${DATASET}/samples_256x256x3.npz \
         --max_data 50000 \
         --uncertainty_portion 0.1 \

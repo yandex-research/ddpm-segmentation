@@ -1,0 +1,28 @@
+{
+    "exp_dir": "pixel_classifiers/horse_21/mae",
+    "model_type": "mae",
+    
+    "category": "horse_21",
+    "number_class": 21,
+    "ignore_label": 255,
+  
+    "training_path": "datasets/horse_21/real/train",
+    "validation_path": "datasets/horse_21/ddpm",
+    "testing_path": "datasets/horse_21/real/test",
+    "model_path": "checkpoints/mae/lsun_horse.pth",
+  
+    "dim": [256, 256, 12288],
+    "steps": [],
+    "blocks": [],
+  
+    "model_num": 10,
+    "batch_size": 64,
+    "max_training": 30,
+    
+    "training_number": 30,
+    "testing_number": 30,
+  
+    "upsample_mode":"bilinear",
+    "input_activations": false
+}
+  

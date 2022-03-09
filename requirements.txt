@@ -4,3 +4,4 @@ blobfile==1.2.7
 tqdm==4.62.3
 opencv-python==4.5.4.60
 mpi4py
+timm==0.4.12
