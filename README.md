@@ -57,11 +57,12 @@ FFHQ-256 is trained by ourselves using the same model parameters as for the LSUN
 2. Download the DDPM checkpoint:\
  &nbsp;&nbsp; ```bash checkpoints/ddpm/download_checkpoint.sh <checkpoint_name>```
 3. Check paths in ```experiments/<dataset_name>/ddpm.json``` 
-4. Run: ```bash scripts/ddpm/train_interpreter.sh <dataset_name>``` 
-
+4. Run: ```bash scripts/ddpm/train_interpreter.sh <dataset_name>```
+   
 **Available checkpoint names:** lsun_bedroom, ffhq, lsun_cat, lsun_horse\
 **Available dataset names:** bedroom_28, ffhq_34, cat_15, horse_21, celeba_19, ade_bedroom_30
 
+**Note:** ```train_interpreter.sh``` is RAM consuming since it keeps all training pixel representations in memory. For ex, it requires ~210Gb for 50 training images of 256x256. (See [issue](https://github.com/nv-tlabs/datasetGAN_release/issues/34))
 
 ### How to improve the performance
 
@@ -75,7 +76,7 @@ FFHQ-256 is trained by ourselves using the same model parameters as for the LSUN
 ### Synthetic datasets
 
 To download DDPM-produced synthetic datasets (50000 samples, ~7Gb) (updated 3/8/2022):\
-```bash synthetic-datasets/gan/download_synthetic_dataset.sh <dataset_name>```
+```bash synthetic-datasets/ddpm/download_synthetic_dataset.sh <dataset_name>```
 
 ### Run | Option #1
 
