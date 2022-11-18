@@ -114,7 +114,7 @@ def save_predictions(args, image_paths, preds):
 
     for i, pred in enumerate(preds):
         filename = image_paths[i].split('/')[-1].split('.')[0]
-        np.save(os.path.join(args['exp_dir'], 'predictions', filename + '.npy'), pred[0])
+        np.save(os.path.join(args['exp_dir'], 'predictions', filename + '.npy'), pred)
 
         pred = np.squeeze(pred)
         mask = colorize_mask(pred, palette)
