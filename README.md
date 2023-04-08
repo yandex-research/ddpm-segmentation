@@ -64,7 +64,7 @@ FFHQ-256 is trained by ourselves using the same model parameters as for the LSUN
 
 **Note:** ```train_interpreter.sh``` is RAM consuming since it keeps all training pixel representations in memory. For ex, it requires ~210Gb for 50 training images of 256x256. (See [issue](https://github.com/nv-tlabs/datasetGAN_release/issues/34))
 
-**Pretrained pixel classifiers** and test predictions are [here](https://www.dropbox.com/s/zglqj6g0lfxdsg5/pixel_classifiers.tar?dl=0).
+**Pretrained pixel classifiers** and test predictions are [here](https://www.dropbox.com/s/kap229jvmhfwh7i/pixel_classifiers.tar?dl=0).
 
 ### How to improve the performance
 
